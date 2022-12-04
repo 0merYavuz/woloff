@@ -20,7 +20,7 @@ namespace woloff
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
         
-
+        
 
         private static void StartListener()
         {
